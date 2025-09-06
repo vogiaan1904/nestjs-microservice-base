@@ -1,7 +1,7 @@
 import { BaseRepositoryInterface, PaginationQuery } from './interfaces/base.interface';
 import { paginator, PaginatorTypes } from '@nodeteam/nestjs-prisma-pagination';
 import { GetPaginationResponse } from '@interfaces/pagination-resp.interface';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaService } from '../../infra/prisma/prisma.service';
 
 const paginate: PaginatorTypes.PaginateFunction = paginator({
   page: 1,

@@ -1,8 +1,8 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { LoggerService } from '@shared/services/logger.service';
-import { AppConfigService } from '@shared/services/config.service';
+import { LoggerService } from '@services/logger.service';
+import { AppConfigService } from '@services/config.service';
 import { setupSwagger } from './shared/swagger/setup';
 
 async function bootstrap() {
@@ -36,7 +36,9 @@ async function bootstrap() {
   }
 
   await app.listen(port);
-  logger.log(`Application is running on: http://localhost:${port}/${configService.appConfig.globalPrefix || 'api'}`);
+  logger.log(
+    `Application is running on: http://localhost:${port}/${configService.appConfig.globalPrefix || 'api'}`,
+  );
 
   if (isDocsEnv) {
     logger.info(
